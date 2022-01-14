@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Security System</title>
+</head>
+<body>
+    <h1>Fire Security System</h1>
+    <div>
+        #include LM35.h <br>
+            #include SoftwareSerial.h<br>
+            // Rx Tx <br>
+            SoftwareSerial mySerial(12, 11);<br> //take your Rx and Tx pin of your Bluetooth Module <br>
+            char numberortext=0;<br>
+            char enable=0;<br>
+            String intext;<br>
+            String innumber;<br>
+            int f=2;<br>
+            void setup()<br>
+            {<br>
+            pinMode(8,OUTPUT);<br>
+            Serial.begin(9600);<br> //take your Baud rate <br>
+            mySerial.begin(9600);<br>
+            while (!Serial)<br>
+            {<br>
+            ; // wait for serial port to connect.<br>
+            6 <br>
+            } <br>
+            Serial.println("set phone number"); <br>
+            } <br>
+            void loop() <br>
+            { <br>
+            LM35 sensor1(A0);<br> // Sensor connected to pin A0 <br>
+            double temp = sensor1.read();<br> //Returns temperature based on a single reading <br>
+            double temp1 = sensor1.read(5); <br> //Returns temperature based on 5 readings <br> (more
+            accurate but slower) <br>
+            //Serial.println(temp1); <br>
+            if(temp1 < 13) <br>
+            {<br>
+            digitalWrite(8,HIGH);<br>
+            {<br>
+            if(f==2)<br>
+            { intext ="your house is on fire";<br>
+            Serial.println("set phone number");<br>
+            innumber = "01*********"; //user phone number<br>
+            
+            Serial.println("set SMS text");<br>
+            mySerial.print(innumber + "/" + intext);<br> //send number and text to your
+            phone <br>
+            f=3;<br>
+            }<br>
+            else{<br>
+            digitalWrite(8,LOW);<br>
+            
+            }}}}<br>
+    </div>
+    
+</body>
+</html>
